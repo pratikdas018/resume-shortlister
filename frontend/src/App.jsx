@@ -3,6 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import AuthPage from "./pages/AuthPage";
 import { api, AUTH_TOKEN_STORAGE_KEY, setAuthToken } from "./api";
+import Footer from "./components/Footer";
 
 function App() {
   const [workspace, setWorkspace] = useState("recruiter");
@@ -81,23 +82,29 @@ function App() {
 
   if (authLoading) {
     return (
-      <div className="min-h-screen px-4 py-10 md:px-10">
-        <div className="mx-auto w-full max-w-7xl">
-          <div className="glass-panel rounded-3xl p-6">
-            <p className="text-sm text-slate-600">Checking session...</p>
+      <div className="min-h-screen">
+        <div className="px-4 py-10 md:px-10">
+          <div className="mx-auto w-full max-w-7xl">
+            <div className="glass-panel rounded-3xl p-6">
+              <p className="text-sm text-slate-600">Checking session...</p>
+            </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
 
   if (!currentUser) {
     return (
-      <AuthPage
-        onAuthenticated={handleAuthenticated}
-        theme={theme}
-        onToggleTheme={toggleTheme}
-      />
+      <div className="min-h-screen">
+        <AuthPage
+          onAuthenticated={handleAuthenticated}
+          theme={theme}
+          onToggleTheme={toggleTheme}
+        />
+        <Footer />
+      </div>
     );
   }
 
@@ -148,6 +155,8 @@ function App() {
       ) : (
         <AdminDashboard theme={theme} onToggleTheme={toggleTheme} />
       )}
+
+      <Footer />
     </div>
   );
 }
