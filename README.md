@@ -1,4 +1,4 @@
-# Resume Shortlister ATS
+# Resume Shortlister ATS  
 
 Modern ATS web app for recruiters with resume parsing, AI insights, candidate pipeline management, and admin analytics.
 
